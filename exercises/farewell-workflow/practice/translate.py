@@ -16,6 +16,11 @@ class TranslateActivities:
     # method above, except the first argument to the callService
     # method will be "get-spanish-farewell". You can name your
     # method whatever you like.
+    @activity.defn
+    async def farewell_in_spanish(self, name: str) -> str:
+        farewell = await self.call_service("get-spanish-farewell", name)
+        return farewell
+
 
     # Utility method for making calls to the microservices
     async def call_service(self, stem: str, name: str) -> str:
