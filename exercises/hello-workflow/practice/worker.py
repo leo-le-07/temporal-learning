@@ -5,14 +5,13 @@ from temporalio.worker import Worker
 
 from greeting import GreetSomeone
 
+TASK_QUEUE = "greeting-tasks"
 
 async def main():
     client = await Client.connect("localhost:7233", namespace="default")
-    # Run the worker
     worker = Worker(
-        # TODO: modify the statement below to specify the task queue name
         client,
-        task_queue="TODO",
+        task_queue=TASK_QUEUE,
         workflows=[GreetSomeone],
     )
     print("Starting worker...")
